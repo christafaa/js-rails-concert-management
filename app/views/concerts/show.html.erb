@@ -1,0 +1,21 @@
+<h2>Title: <%= @concert.title %></h2>
+
+<h3>Date: <%= display_date(@concert) %></h3>
+
+<h3>Venue: <%= @concert.venue %></h3>
+
+<h3><%= link_to "Program", concert_pieces_path(@concert) %></h3>
+
+<%= link_to "Edit Concert Details", edit_concert_path(@concert) %><br>
+
+<h3>Attendees:</h3>
+
+<% if @concert.attendees.empty? %>
+  <ul>
+    <li>None</li>
+  </ul>
+<% else %>
+  <%= render "attendees/table" %><br>
+<% end %>
+
+<%= render "add_attendee" %>

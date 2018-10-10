@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Profession</th>
+    <th>Wealth Rating</th>
+    <th>Total Season Tickets</th>
+    <th>Solicitor</th>
+  </tr>
+  <% @attendees.each do |attendee| %>
+    <tr>
+      <td><%= link_to attendee.full_name, attendee_path(attendee) %></td>
+      <td><%= attendee.profession %></td>
+      <td><%= attendee.wealth_rating %></td>
+      <td><%= attendee.tickets.count %></td>
+      <td><%= link_to attendee.user.username, user_path(attendee.user) if attendee.user %></td>
+    </tr>
+  <% end %>
+</table><br>
+
+<%= "Sorted by: #{@sort_status}" %><br><br>
+
+<%= form_tag(@path, method: "get") do %>
+  <%= select_tag "sort", options_for_select(["Alphabetical", "Best Wealth Rating", "Most Season Tickets", "Top Prospects"]) %>
+  <%= submit_tag "Sort" %>
+<% end %>

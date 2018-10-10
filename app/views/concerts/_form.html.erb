@@ -1,0 +1,9 @@
+<%= form_for @concert do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br><br>
+  <%= f.label :venue %>
+  <%= f.text_field :venue %><br><br>
+  <%= f.label :date %>
+  <%= f.date_field :date %><br><br>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,21 @@
+<h2><%= @attendee.full_name %></h2>
+
+<h3>Profession: <%= @attendee.profession %></h3>
+
+<h3>Age: <%= @attendee.age %></h3>
+
+<h3>Wealth Rating: <%= @attendee.wealth_rating %></h3>
+
+<h3>Notes: <%= @attendee.notes %></h3>
+
+<h3>Solicitor: <%= link_to @attendee.user.username, user_path(@attendee.user) if @attendee.user %></h3>
+
+<h3><%= @attendee.full_name %>'s Concerts:</h3>
+
+<ul>
+  <% @attendee.concerts.uniq.each do |concert| %>
+    <li><%= display_date(concert) %> -  <%= link_to concert.title, concert_path(concert) %> - Seats: <%= display_seats(concert, @attendee) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Edit Attendee", edit_attendee_path(@attendee) %>

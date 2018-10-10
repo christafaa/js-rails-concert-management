@@ -1,0 +1,21 @@
+<h2>Edit Attendee:</h2>
+
+<%= render partial: "application/errors", locals: {object: @attendee} %>
+
+<%= form_for @attendee do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %><br><br>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %><br><br>
+  <%= f.label :profession %>
+  <%= f.text_field :profession %><br><br>
+  <%= f.label :age %>
+  <%= f.number_field :age %><br><br>
+  <%= f.label :wealth_rating %>
+  <%= f.number_field :wealth_rating %><br><br>
+  <%= f.label :user_id %>
+  <%= f.collection_select :user_id, @users, :id, :username, {:include_blank => 'None'} %><br><br>
+  <%= f.label :notes %>
+  <%= f.text_area :notes %><br><br>
+  <%= f.submit %>
+<% end %>

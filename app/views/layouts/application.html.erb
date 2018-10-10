@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>JsRailsConcertManagement</title>
+    <title>RailsConcertManagement</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,22 @@
   </head>
 
   <body>
+    <h2>Concert Management</h2>
+    <% if session.has_key?(:user_id) %>
+      <%= button_to "Home", user_path(find_user(session[:user_id])), method: :get %>
+      <h3>
+        <%= link_to "Concerts", concerts_path %> |
+        <%= link_to "Attendees", attendees_path %> |
+        <%= link_to "Staff", users_path %>
+      </h3>
+    <% end %>
+
     <%= yield %>
+
+    <% if session.has_key?(:user_id) %>
+      <p>Logged in as: <%= display_user(session[:user_id]) %></p>
+      <%= button_to "Logout", "/logout" %>
+    <% end %>
+
   </body>
 </html>

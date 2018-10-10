@@ -1,0 +1,11 @@
+<h3>Title: <%= @piece.title %></h3>
+
+<h3>Composer: <%= @piece.composer %></h3>
+
+<h3>Date Composed: <%= @piece.date_composed %></h3>
+
+<h4>This piece will be performed at: <%= link_to @piece.concert.title, concert_path(@piece.concert) %></h4>
+
+<%= link_to "Edit this piece", edit_concert_piece_path(@piece.concert, @piece) %><br><br>
+
+<%= link_to "Delete this piece", concert_piece_path(@piece.concert, @piece), method: :delete %>

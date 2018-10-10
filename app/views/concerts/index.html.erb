@@ -1,0 +1,9 @@
+<h2>All Concerts:</h2>
+
+<ul>
+  <% @concerts.each do |concert| %>
+    <li><%= display_date(concert) %> - <%= link_to concert.title, concert_path(concert) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Create a Concert", new_concert_path %>

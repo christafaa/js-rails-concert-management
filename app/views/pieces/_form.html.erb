@@ -1,0 +1,9 @@
+<%= form_for [@concert, @piece] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br><br>
+  <%= f.label :composer %>
+  <%= f.text_field :composer %><br><br>
+  <%= f.label :date_composed %>
+  <%= f.number_field :date_composed %><br><br>
+  <%= f.submit %>
+<% end %>
