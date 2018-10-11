@@ -15,6 +15,7 @@ class ConcertsController < ApplicationController
 
   def index
     @concerts = Concert.all
+    render json: @concerts
   end
 
   def edit
@@ -23,9 +24,10 @@ class ConcertsController < ApplicationController
 
   def show
     @concert = Concert.find(params[:id])
-    @path = concert_path(@concert)
-    collection = Attendee.collection_of(@concert)
-    @attendees, @sort_status = helpers.attendees_and_sort_status(collection, params[:sort])
+    # @path = concert_path(@concert)
+    # collection = Attendee.collection_of(@concert)
+    # @attendees, @sort_status = helpers.attendees_and_sort_status(collection, params[:sort])
+    render json: @concert
   end
 
   def update
