@@ -20,6 +20,7 @@ function appendConcerts(data) {
   let concerts = []
   data.forEach(function(concertData) {
     concerts.push(new Concert(concertData));
+    debugger
   });
   $(".display").html(HandlebarsTemplates['concerts_template'](concerts));
   addConcertLinkListeners();
@@ -27,6 +28,7 @@ function appendConcerts(data) {
 
 function appendConcert(data) {
   let concert = new Concert(data)
+  debugger
   $(".display").html(HandlebarsTemplates['concert_template'](concert));
 }
 
@@ -35,7 +37,7 @@ function addConcertLinkListeners() {
     e.preventDefault();
     $(".display").html("");
     const id = this.id
-    $.get("/concerts/" + id, function(data) {
+    $.getJSON("/concerts/" + id, function(data) {
       appendConcert(data);
     })
   })
@@ -45,7 +47,7 @@ function addEventListeners() {
   $("div#concerts-link").on("click", function(e) {
     e.preventDefault();
     $(".display").html("");
-    $.get("/concerts", function(data) {
+    $.getJSON("/concerts", function(data) {
       appendConcerts(data);
     });
   });

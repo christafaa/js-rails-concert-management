@@ -27,7 +27,7 @@ class ConcertsController < ApplicationController
     # @path = concert_path(@concert)
     # collection = Attendee.collection_of(@concert)
     # @attendees, @sort_status = helpers.attendees_and_sort_status(collection, params[:sort])
-    render json: @concert
+    render json: @concert, serializer: AttendeeConcertSerializer
   end
 
   def update
