@@ -7,7 +7,7 @@ class Concert {
   }
 
   displayDate() {
-    var date = new Date(this.date)
+    let date = new Date(this.date)
     return date.toLocaleDateString("en-US", {year: 'numeric', month: 'long', day: 'numeric'});
   }
 }
@@ -17,7 +17,7 @@ $(function() {
 });
 
 function appendConcerts(data) {
-  var concerts = []
+  let concerts = []
   data.forEach(function(concertData) {
     concerts.push(new Concert(concertData));
   });
