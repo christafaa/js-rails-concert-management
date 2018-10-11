@@ -14,8 +14,9 @@
     <% if session.has_key?(:user_id) %>
       <%= button_to "Home", '/', method: :get %>
       <h3>
-        <%= link_to "Concerts", concerts_path %> |
-        <%= link_to "Attendees", attendees_path %>
+        <div id="concerts-link">
+          <%= link_to "Concerts", concerts_path %>
+        </div>
       </h3>
     <% end %>
 
