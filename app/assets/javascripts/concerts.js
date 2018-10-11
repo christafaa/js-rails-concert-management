@@ -21,7 +21,24 @@ function appendConcerts(data) {
   data.forEach(function(concertData) {
     concerts.push(new Concert(concertData));
   });
-  $(".display").html(HandlebarsTemplates['concerts_template'](concerts))
+  $(".display").html(HandlebarsTemplates['concerts_template'](concerts));
+  addConcertLinkListeners();
+}
+
+function appendConcert(data) {
+  let concert = new Concert(data)
+  $(".display").html(HandlebarsTemplates['concert_template'](concert));
+}
+
+function addConcertLinkListeners() {
+  $("a.concert-link").on("click", function(e) {
+    e.preventDefault();
+    $(".display").html("");
+    const id = this.id
+    $.get("/concerts/" + id, function(data) {
+      appendConcert(data);
+    })
+  })
 }
 
 function addEventListeners() {

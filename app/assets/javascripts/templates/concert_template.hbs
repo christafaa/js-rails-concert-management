@@ -1,0 +1,22 @@
+<h2>Title: {{ title }}</h2>
+
+<h3>Date: {{ displayDate }}</h3>
+
+<h3>Venue: {{ venue }}</h3>
+
+<h3><a href="/concerts/{{ id }}/pieces">Program</a></h3>
+
+<a href="/concerts/{{ id }}/edit">Edit Concert Details</a><br>
+
+<!-- <h3>Attendees:</h3>
+
+
+<% if @concert.attendees.empty? %>
+  <ul>
+    <li>None</li>
+  </ul>
+<% else %>
+  <%= render "attendees/table" %><br>
+<% end %>
+
+<%= render "add_attendee" %> -->
