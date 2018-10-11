@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Date</th>
+  </tr>
+  {{#each this}}
+    <tr>
+      <td><a href="/concerts/{{ id }}">{{ title }}</a></td>
+      <td>{{ displayDate }}</td>
+    </tr>
+  {{/each}}
+</table>

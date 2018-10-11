@@ -5,6 +5,11 @@ class Concert {
     this.venue = data.venue;
     this.date = data.date;
   }
+
+  displayDate() {
+    var date = new Date(this.date)
+    return date.toLocaleDateString("en-US", {year: 'numeric', month: 'long', day: 'numeric'});
+  }
 }
 
 $(function() {
@@ -12,10 +17,11 @@ $(function() {
 });
 
 function appendConcerts(data) {
+  var concerts = []
   data.forEach(function(concertData) {
-    let concert = new Concert(concertData)
-    $(".display").append(newConcert.title + "<br>")
+    concerts.push(new Concert(concertData));
   });
+  $(".display").html(HandlebarsTemplates['concerts_template'](concerts))
 }
 
 function addEventListeners() {
