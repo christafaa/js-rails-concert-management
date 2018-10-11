@@ -14,7 +14,6 @@ class Concert {
 
 $(function() {
   getConcerts();
-  addEventListeners();
 });
 
 function getConcerts() {
@@ -28,7 +27,7 @@ function appendConcerts(data) {
   data.forEach(function(concertData) {
     concerts.push(new Concert(concertData));
   });
-  $(".display").html(HandlebarsTemplates['concerts_template'](concerts));
+  $(".lists").html(HandlebarsTemplates['concerts_template'](concerts));
   addConcertLinkListeners();
 }
 
@@ -38,13 +37,12 @@ function appendConcert(data) {
   appendAttendees(data.attendees);
 }
 
-// function addSubmitListener() {
-//   $("input#submit").on("click", function(e) {
-//     e.preventDefault();
-//     e.form.value
-//     debugger
-//   });
-// }
+function addSubmitListener() {
+  $("input#submit").on("click", function(e) {
+    e.preventDefault();
+
+  });
+}
 
 function addConcertLinkListeners() {
   $("a.concert-link").on("click", function(e) {
@@ -53,19 +51,5 @@ function addConcertLinkListeners() {
     $.getJSON("/concerts/" + id, function(data) {
       appendConcert(data);
     });
-  });
-
-  $("a#create-concert-link").on("click", function(e) {
-    e.preventDefault();
-    // $(".display").append();
-    // addSubmitListener();
-  });
-}
-
-function addEventListeners() {
-  $("div#concerts-link").on("click", function(e) {
-    e.preventDefault();
-    $(".display").html("");
-    getConcerts();
   });
 }

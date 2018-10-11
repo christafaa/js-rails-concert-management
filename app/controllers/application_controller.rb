@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   def home
     if session.has_key?(:user_id)
       user = User.find(session[:user_id])
+      @concert = Concert.new
       render :home
     else
       render :login

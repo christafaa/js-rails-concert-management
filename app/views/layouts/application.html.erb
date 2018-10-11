@@ -13,11 +13,6 @@
     <h2>Concert Management</h2>
     <% if session.has_key?(:user_id) %>
       <%= button_to "Home", '/', method: :get %>
-      <h3>
-        <div id="concerts-link">
-          <%= link_to "Concerts", concerts_path %>
-        </div>
-      </h3>
     <% end %>
 
     <%= yield %>
