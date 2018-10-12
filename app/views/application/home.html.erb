@@ -1,7 +1,7 @@
 <div class="display">
   <div class="lists"></div>
   <h3>Create a Concert</h3>
-    <%= form_for @concert do |f| %>
+    <%= form_for @concert, :html => {:id => "new_concert"} do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %><br><br>
     <%= f.label :venue %>

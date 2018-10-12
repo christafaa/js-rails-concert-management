@@ -4,13 +4,8 @@ class ConcertsController < ApplicationController
   end
 
   def create
-    @concert = Concert.new(concert_params)
-
-    if @concert.save
-      redirect_to concert_path(@concert)
-    else
-      render :new
-    end
+    @concert = Concert.create(concert_params)
+    render json: @concert
   end
 
   def index

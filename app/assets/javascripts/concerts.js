@@ -8,12 +8,13 @@ class Concert {
 
   displayDate() {
     let date = new Date(this.date)
-    return date.toLocaleDateString("en-US", {year: 'numeric', month: 'long', day: 'numeric'});
+    return date.toLocaleDateString("en-US", {year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC'});
   }
 }
 
 $(function() {
   getConcerts();
+  addSubmitListener();
 });
 
 function getConcerts() {
@@ -38,9 +39,11 @@ function appendConcert(data) {
 }
 
 function addSubmitListener() {
-  $("input#submit").on("click", function(e) {
+  $("#new_concert").on("submit", function(e) {
     e.preventDefault();
-
+    $.post(this.action, $(this).serialize(), function(data) {
+      appendConcert(data);
+    });
   });
 }
 
