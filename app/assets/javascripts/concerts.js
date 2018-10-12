@@ -32,10 +32,15 @@ function appendConcerts(data) {
   addConcertLinkListeners();
 }
 
-function appendConcert(data) {
+function showConcert(data) {
   let concert = new Concert(data)
-  $(".display").html(HandlebarsTemplates['concert_template'](concert));
+  $(".display").html(HandlebarsTemplates['concert_show_template'](concert));
   appendAttendees(data.attendees);
+}
+
+function appendConcert(data) {
+  let concert = new Concert(data);
+  $(".lists table").append(HandlebarsTemplates['concert_append_template'](concert));
 }
 
 function addSubmitListener() {
@@ -52,7 +57,7 @@ function addConcertLinkListeners() {
     e.preventDefault();
     const id = this.id
     $.getJSON("/concerts/" + id, function(data) {
-      appendConcert(data);
+      showConcert(data);
     });
   });
 }
