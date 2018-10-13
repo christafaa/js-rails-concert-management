@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
-  resources :concerts, only: [:create, :show, :index]
+  resources :concerts, only: [:new, :create, :show, :index]
 
   resources :sessions, only: [:create]
 

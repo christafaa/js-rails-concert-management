@@ -1,13 +1,4 @@
 <div class="display">
   <div class="lists"></div>
-  <h3>Create a Concert</h3>
-    <%= form_for @concert, :html => {:id => "new_concert"} do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %><br><br>
-    <%= f.label :venue %>
-    <%= f.text_field :venue %><br><br>
-    <%= f.label :date %>
-    <%= f.date_field :date %><br><br>
-    <%= f.submit %>
-  <% end %>
+  <div id="create-concert"></div>
 </div>

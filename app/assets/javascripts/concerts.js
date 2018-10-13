@@ -14,7 +14,6 @@ class Concert {
 
 $(function() {
   getConcerts();
-  addSubmitListener();
 });
 
 function getConcerts() {
@@ -45,7 +44,7 @@ function appendConcert(data) {
 }
 
 function addSubmitListener() {
-  $("#new_concert").on("submit", function(e) {
+  $("form#new_concert").on("submit", function(e) {
     e.preventDefault();
     $.post(this.action, $(this).serialize(), function(data) {
       appendConcert(data);
@@ -59,6 +58,14 @@ function addConcertLinkListeners() {
     const id = this.id
     $.getJSON("/concerts/" + id, function(data) {
       showConcert(data);
+    });
+  });
+
+  $("a#create-concert-link").on("click", function(e) {
+    e.preventDefault();
+    $.get("/concerts/new", function(data) {
+      $("#create-concert").html(data)
+      addSubmitListener();
     });
   });
 }
