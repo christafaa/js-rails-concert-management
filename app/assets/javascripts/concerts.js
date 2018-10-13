@@ -41,6 +41,7 @@ function showConcert(data) {
 function appendConcert(data) {
   let concert = new Concert(data);
   $(".lists table").append(HandlebarsTemplates['concert_append_template'](concert));
+  addConcertLinkListeners();
 }
 
 function addSubmitListener() {

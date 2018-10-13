@@ -7,12 +7,21 @@
     <th>Age</th>
     <th>Wealth Rating</th>
   </tr>
-  {{#each this}}
+  {{#if this}}
+    {{#each this}}
+      <tr>
+        <td>{{ displayName }}</td>
+        <td>{{ profession }}</td>
+        <td>{{ age }}</td>
+        <td>{{ wealth_rating }}</td>
+      </tr>
+    {{/each}}
+  {{else}}
     <tr>
-      <td>{{ displayName }}</td>
-      <td>{{ profession }}</td>
-      <td>{{ age }}</td>
-      <td>{{ wealth_rating }}</td>
+      <td>No Attendees</td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
-  {{/each}}
+  {{/if}}
 </table><br>
