@@ -3,15 +3,19 @@ Rails.application.routes.draw do
 
   get '/', to: 'application#home'
 
-  resources :users, only: [:new, :create, :show, :index]
+  # resources :users, only: [:new, :create, :show, :index]
 
-  resources :concerts do
-    resources :attendees, only: [:create]
-    resources :tickets, only: [:create]
-    resources :pieces
-  end
+  # resources :concerts do
+  #   resources :attendees, only: [:create]
+  #   resources :tickets, only: [:create]
+  #   resources :pieces
+  # end
+  #
+  # resources :attendees, only: [:show, :index, :edit, :update]
 
-  resources :attendees, only: [:show, :index, :edit, :update]
+  resources :users, only: [:new, :create]
+
+  resources :concerts, only: [:create, :show, :index]
 
   resources :sessions, only: [:create]
 
