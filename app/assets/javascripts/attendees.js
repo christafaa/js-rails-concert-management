@@ -26,5 +26,5 @@ function appendAttendees(data) {
       attendees.push(newAttendee)
     }
   });
-  $(".display").append(HandlebarsTemplates['attendees_template'](attendees));
+  $("#display").append(HandlebarsTemplates['attendees_template'](attendees));
 }
