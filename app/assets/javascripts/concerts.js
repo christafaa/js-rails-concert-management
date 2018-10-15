@@ -65,7 +65,7 @@ function addConcertLinkListeners() {
     });
   });
 
-  $("a#create-concert-link").on("click", function(e) {
+  $("div#create-concert a").on("click", function(e) {
     e.preventDefault();
     $.get("/concerts/new", function(data) {
       $("div#create-concert").html(data)
