@@ -14,32 +14,36 @@ class Concert {
 
 $(function() {
   getConcerts();
+  addHomeListener();
 });
+
+function addHomeListener() {
+  $("div#home form").on("submit", function(e) {
+    e.preventDefault();
+    getConcerts();
+  })
+}
 
 function getConcerts() {
   $.getJSON("/concerts", function(data) {
-    appendConcerts(data);
+    let concerts = []
+    data.forEach(function(concertData) {
+      concerts.push(new Concert(concertData));
+    });
+    $("#display").html(HandlebarsTemplates['concerts_template'](concerts));
+    addConcertLinkListeners();
   });
-}
-
-function appendConcerts(data) {
-  let concerts = []
-  data.forEach(function(concertData) {
-    concerts.push(new Concert(concertData));
-  });
-  $(".lists").html(HandlebarsTemplates['concerts_template'](concerts));
-  addConcertLinkListeners();
 }
 
 function showConcert(data) {
   let concert = new Concert(data)
-  $(".display").html(HandlebarsTemplates['concert_show_template'](concert));
+  $("#display").html(HandlebarsTemplates['concert_show_template'](concert));
   appendAttendees(data.attendees);
 }
 
 function appendConcert(data) {
   let concert = new Concert(data);
-  $(".lists table").append(HandlebarsTemplates['concert_append_template'](concert));
+  $("#display table").append(HandlebarsTemplates['concert_append_template'](concert));
   addConcertLinkListeners();
 }
 
@@ -64,7 +68,7 @@ function addConcertLinkListeners() {
   $("a#create-concert-link").on("click", function(e) {
     e.preventDefault();
     $.get("/concerts/new", function(data) {
-      $("#create-concert").html(data)
+      $("div#create-concert").html(data)
       addSubmitListener();
     });
   });

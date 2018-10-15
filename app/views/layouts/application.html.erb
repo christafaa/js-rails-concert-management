@@ -12,7 +12,9 @@
   <body>
     <h2>Concert Management</h2>
     <% if session.has_key?(:user_id) %>
-      <%= button_to "Home", '/', method: :get %>
+      <div id="home">
+        <%= button_to "Home", '/', method: :get %>
+      </div>
     <% end %>
 
     <%= yield %>
