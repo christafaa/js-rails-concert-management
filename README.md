@@ -12,7 +12,7 @@ Run rake db:migrate
 To run a local server, use rails s
 
 # Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/christafaa/rails-concert-management. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/christafaa/js-rails-concert-management. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
 # License
 The application is available as open source under the terms of the MIT License.
